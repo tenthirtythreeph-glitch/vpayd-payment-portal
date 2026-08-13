@@ -1,0 +1,54 @@
+.app-shell {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.payment-url-panel,
+.checkout-panel {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.payment-url-panel {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.payment-url-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.payment-iframe {
+  display: block;
+  width: 100%;
+  min-height: 720px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  background: white;
+}
+
+.checkout-panel {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 980px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .payment-url-panel,
+  .checkout-panel {
+    width: 100%;
+  }
+}

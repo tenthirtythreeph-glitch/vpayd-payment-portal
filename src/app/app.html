@@ -1,2 +1,21 @@
 <app-error-modal></app-error-modal>
-<app-checkout (checkoutComplete)="onCheckoutComplete($event)" />
+
+<!-- <div class="app-shell">
+  @if (safePaymentUrl) {
+    <section aria-live="polite" class="payment-url-panel">
+      <h2>Payment Checkout</h2>
+      <iframe
+        [src]="safePaymentUrl"
+        title="Payment checkout"
+        width="100%"
+        height="720"
+        class="payment-iframe"
+        loading="lazy"
+      ></iframe>
+    </section>
+  } -->
+
+  <div class="checkout-panel">
+    <app-checkout (checkoutComplete)="onCheckoutComplete($event)" />
+  </div>
+<!-- </div> -->

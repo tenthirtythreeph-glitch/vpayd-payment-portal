@@ -3,16 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import * as CryptoJS from 'crypto-js';
 
-export interface CheckoutPayload {
-  amount: number,
-  currency: string,
-  merchantReference: string,
-  successUrl: string,
-  cancelUrl: string,
-  failureUrl: string,
-  callbackUrl: string,
+export interface CheckoutPayload {  
+  txn_ref: string,
+  other_details: [],
+  txn_amount: number;
+  mobile_number: string;
+  first_name: string;
+  last_name: string;
+  email: string;
 }
- 
 
 export interface PaymentMethodOption {
   id: string;
@@ -28,7 +27,7 @@ export interface PaymentMethodOption {
 })
 export class CheckoutComponent {
   readonly processingFee = 0;
-  readonly presetAmounts = [75, 90, 100, 150, 175, 210, 750, 800, 900,  1000, 2500];
+  readonly presetAmounts = [100, 10000, 25000, 50000, 75000, 100000, 120000, 150000, 160000, 175000];
 
   readonly paymentMethods: PaymentMethodOption[] = [
     {
@@ -117,31 +116,22 @@ export class CheckoutComponent {
 
   submitCheckout(): void {
     var date = new Date();
-    var timestamp = date.getTime();
-
-    // let operationId = `ten33${timestamp}`;
-    // let paymentId = `ten33${timestamp}`;
-
-    // let serviceId = 'ten33';
-    // let passwork = '6[1v2hKy5lZ>';
-    // let secretKey = '=N?WQ=biB|%j!jl[>t}yT[L!*kY{jo';
-    let currency = 'AUD';
+    var timestamp = date.getTime();  
     let callbackUrl = 'https://play.svix.com/in/e_Ixp7Q5u4skix17YdpGLJoj9rYrv/';
-    let returnUrl = 'https://payment-portal-tawny.vercel.app/';
+    let returnUrl = 'https://play.svix.com/in/e_Ixp7Q5u4skix17YdpGLJoj9rYrv/';
     let txnamount = this.totalAmount(); // Convert to cents
 
     // let raw_signature = serviceId + passwork + txnamount + currency + operationId + paymentId + this.paymentMethod() + callbackUrl + returnUrl;
     // let signature = CryptoJS.HmacSHA256(raw_signature, secretKey); // This is a placeholder. Replace with actual signature generation logic.
 
-    const payload: CheckoutPayload = {
-      
-      amount: txnamount,
-      currency: currency,
-      merchantReference: `${timestamp}`,
-      successUrl: returnUrl,
-      cancelUrl: returnUrl,
-      failureUrl: returnUrl,
-      callbackUrl: callbackUrl
+    const payload: CheckoutPayload = {  
+      txn_ref: `${timestamp}`, 
+      txn_amount: txnamount,
+      mobile_number: '09171234567',
+      first_name: 'John',
+      last_name: 'Doe',
+      email: 'john.doe@example.com',
+      other_details: [],
     };
     console.log('Generated Payload:', payload);
     this.checkoutComplete.emit(payload);

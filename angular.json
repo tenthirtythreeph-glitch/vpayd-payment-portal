@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "ap-payment-portal": {
+    "vpayd-payment-portal": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -57,10 +57,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ap-payment-portal:build:production"
+              "buildTarget": "vpayd-payment-portal:build:production"
             },
             "development": {
-              "buildTarget": "ap-payment-portal:build:development"
+              "buildTarget": "vpayd-payment-portal:build:development"
             }
           },
           "defaultConfiguration": "development"

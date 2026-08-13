@@ -8,8 +8,8 @@ import { CheckoutPayload } from './checkout/checkout.component';
 })
 export class CheckoutApiService {
   // private readonly apiUrl = 'https://n9oeax2a74.execute-api.us-east-1.amazonaws.com/dev/api/pay';
-  private readonly apiUrl = 'https://payamo.vercel.app/api/payment/intent';
-  // private readonly apiUrl = 'http://localhost:3000/api/payment/intent';
+  // private readonly apiUrl = 'https://payamo.vercel.app/api/payment/intent';
+  private readonly apiUrl = 'http://localhost:3000/api/payments/card';
 
   constructor(private readonly http: HttpClient) {}
 
